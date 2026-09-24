@@ -1,146 +1,164 @@
 ---
 name: ai-writing-humanizer
-description: Remove mechanical AI flavor from English and Chinese prose while preserving facts, register, and structure. Use when a draft (blog post, essay, email, product copy, newsletter, academic prose) feels flat, robotic, or obviously AI-generated, or when asked to "humanize" / 去 AI 味 / 降低 AI 痕迹. Not for defeating AI detectors or fabricating evidence.
+description: Humanize English and Chinese writing for university assignments, reports, and study notes while preserving facts, academic integrity, and the student's own voice. Use when reducing robotic AI style, avoiding template-like answers, or adapting drafts into natural student-level writing. Not for bypassing AI detection or misrepresenting authorship.
 ---
 
-# AI Writing Humanizer
+# AI Writing Humanizer - University Assignment Mode
 
-Remove mechanical AI flavor from English and Chinese prose. Preserve facts, register, and structure.
+A workflow for turning generic AI-style drafts into natural student writing.
 
-## When to use
+## Core goal
 
-For drafts that feel flat, robotic, or obviously AI-generated: blog posts, essays, emails, product copy, newsletters, academic prose. Do not use to cheat detectors or fabricate evidence.
+Improve authenticity of expression without changing the student's ideas, evidence, or academic meaning.
 
-## Workflow
+This skill focuses on:
 
-1. **Diagnose** — score the text against the 27 AI tells below.
-2. **Subtract** — remove mechanical patterns without adding ideas.
-3. **Add** — restore rhythm, specificity, and a human register.
+- reducing repetitive ChatGPT-style structures
+- making answers sound like a real university student
+- creating wording variation between different drafts
+- keeping appropriate academic level
+- preserving the user's own reasoning
 
-## Invocation
+Do not:
 
-```text
-/humanize <file-or-paste> [--lang en|zh] [--tone conversational|academic|business|story|social|minimal] [--audit-only]
-```
+- fabricate personal experience
+- add unsupported references
+- create false citations
+- help misrepresent AI-generated work as independent work
 
-- `--lang`: default `auto`; override with `en` or `zh`.
-- `--tone`: default `preserve` (keep original register).
-- `--audit-only`: diagnosis only, no rewrite.
+## Assignment workflow
 
-## Guardrails
+### Step 1: Understand the student's context
 
-1. Do not invent facts, examples, quotes, statistics, or sources.
-2. Do not change meaning. Rewrite awkward but correct sentences; do not alter claims.
-3. Preserve register. Business stays business; academic stays academic.
-4. Keep structure unless it is broken or the user asks.
-5. Keep proper nouns, terminology, and data intact.
-6. When uncertain, leave it alone. False positives are better than false repairs.
+Before rewriting, identify:
+
+- course level (undergraduate / postgraduate)
+- subject area
+- expected answer style
+- word limit
+- whether the answer is a short response, report, reflection, or analysis
+
+### Step 2: Diagnose AI patterns
+
+Check for:
+
+- generic introductions
+- textbook-like definitions when unnecessary
+- excessive transitions
+- repeated sentence structures
+- unnatural vocabulary choices
+- over-polished academic tone
+- conclusions that add no information
+
+### Step 3: Rewrite with student voice
+
+Prefer:
+
+- clear sentences
+- specific examples from the question
+- normal university vocabulary
+- slightly varied sentence lengths
+- direct explanation instead of formal filler
+
+Avoid:
+
+- "It is important to note that..."
+- "In today's rapidly changing world..."
+- "plays a crucial role"
+- "comprehensive analysis"
+- "delve into"
+- unnecessary three-part lists
+
+## Modes
+
+### student-short-answer
+
+For homework questions and exam preparation.
+
+Rules:
+
+- concise
+- direct answer first
+- explain only necessary points
+- avoid professor-style writing
+
+### student-report
+
+For lab reports and assignments.
+
+Rules:
+
+- maintain academic accuracy
+- keep methodology terminology
+- avoid exaggerated claims
+
+### explanation-mode
+
+For tutoring.
+
+Rules:
+
+- explain concepts naturally
+- use examples
+- avoid producing a final submission immediately when learning is the goal
+
+## Anti-template variation
+
+When multiple students may answer the same question:
+
+1. Change sentence structure.
+2. Use different but accurate examples.
+3. Avoid common ChatGPT paragraph patterns.
+4. Keep the same academic requirement.
+5. Preserve the student's preferred wording when available.
+
+Example:
+
+Generic:
+
+"The response variable is measured by asking participants to rate the softness of cooked rice on a scale from 1 to 10."
+
+Student style:
+
+"The response variable is the perceived softness of the cooked rice. A group of participants will taste each sample and give a score between 1 and 10. The average score will be used to compare different cooking conditions."
 
 ## Output format
 
+When requested to humanize:
+
 ```markdown
-## Diagnosis
-- Score: X/27 (0 = human-like, 27 = heavily AI-flavored)
-- Top 3 tells: ...
-- Register: ...
-- Risks: ...
+## Main changes
+- ...
 
-## Subtractions
-1. ...
-
-## Additions
-1. ...
-
-## Rewritten text
+## Revised answer
 ...
 
-## Final audit
-- Before: X/27 | After: Y/27 | Remaining: ...
+## Why this sounds more natural
+- ...
 ```
-
-## 27 AI tells
-
-Score 1 per present tell (0.5 if borderline). Full definitions and fixes are in `patterns/ai-tells-en.md` and `patterns/ai-tells-zh.md`.
-
-### Structural (1–5)
-1. Paragraph symmetry
-2. List addiction
-3. Transition formula
-4. Section bloat
-5. Hook-template fatigue
-
-### Lexical (6–10)
-6. AI buzzwords
-7. Hedge overload
-8. Empty intensifiers
-9. Sycophantic polish
-10. Faux-certainty endings
-
-### Syntactic (11–15)
-11. Copula avoidance
-12. Parallelism excess
-13. Tricolon addiction
-14. Long appositive chains
-15. Passive voice default
-
-### Punctuation / formatting (16–19)
-16. Em dash overuse
-17. Bold overuse
-18. Quote-hallucination block
-19. Uniform sentence length
-
-### Voice / register (20–25)
-20. No stance
-21. Reader-moralizing
-22. Emotion-by-label
-23. Generic you
-24. Knowledge-cutoff disclaimer
-25. Over-explaining
-
-### Chinese-specific (26–27)
-26. Translationese / 翻译腔
-27. Four-character slogan endings / 口号式结尾
 
 ## Language rules
 
 ### English
-- Use concrete verbs; kill nominalizations.
-- Vary sentence length; allow fragments in casual text.
-- Replace "utilize", "leverage", "delve" with "use", "use", "look into".
-- Drop "In this article, we will..." unless it is a real roadmap.
+
+- Prefer simple academic English.
+- Use concrete verbs.
+- Remove unnecessary nominalizations.
+- Avoid repeating "important", "significant", "various", "different".
 
 ### Chinese
-- 长句先断，再调语序；拆长定语从句。
-- 能用逗号不用顿号，能用句号不用分号。
-- 删掉「进行」「做出」「展开」等空动词。
-- 控制「的」密度；连续多个「的」必拆分。
-- 口语化连接词（「其实」「不过」「说白了」）可适度使用，但要匹配文体。
-- 段末不强行升华，允许开放式收尾。
 
-## Tone modes
+- Avoid translation-style Chinese.
+- Use natural student expressions.
+- Do not force four-character summaries.
+- Avoid excessive "通过...从而...实现..." structures.
 
-| Mode | Direction |
-|---|---|
-| `conversational` | shorter sentences, contractions, direct address |
-| `academic` | keep citations/precision, remove buzzwords/hedges |
-| `business` | clear action, no fluff, kill sycophancy |
-| `story` | scene, sensory detail, rhythm, point of view |
-| `social` | punchy, platform-aware (小红书 / B站 / 公众号), emoji optional, kill slogans |
-| `minimal` | only remove tells; do not inject voice |
+## Final check
 
-## Advanced options
+Before returning:
 
-- `--deep`: second critique pass after rewrite.
-- `--voice <file.md>`: adopt a writer-voice profile (e.g. 李笑来、王小波、Orwell、Didion) only if explicitly asked.
-- `--seed`: benchmark the same text before and after.
-
-## Self-check
-
-1. Did I remove the top 3 detected tells?
-2. Did I invent any facts, examples, or quotes?
-3. Did I change the core meaning?
-4. Is the register still appropriate?
-5. Does it sound like the same author, just less mechanical?
-6. If this is Chinese, do the sentences read like a native speaker wrote them?
-
-Fix any "no" before returning.
+1. Are facts unchanged?
+2. Are examples supported?
+3. Does it sound like a student rather than a textbook?
+4. Is the wording different from a typical AI template?
+5. Is the academic requirement still satisfied?
